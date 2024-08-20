@@ -421,4 +421,4 @@ function changeStyleAfterTime() {
     }, 4500);
 }
 
-changeStyleAfterTime();
+// changeStyleAfterTime();
