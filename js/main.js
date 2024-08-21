@@ -416,9 +416,53 @@ function typeText(element, text, slowInterval, fastInterval) {
 typeText(loading_console_output, sfrSystemsText, 1, 0.000000001);
 
 function changeStyleAfterTime() {
-    setTimeout(function() {
-        document.querySelector('.loading_main').style.left = '-200vw';
-    }, 4500);
+    setTimeout(function () {
+        document.querySelector('.loading_main').style.bottom = '200vw';
+    }, 5500);
 }
 
-// changeStyleAfterTime();
+changeStyleAfterTime();
+
+function getRandomIP() {
+    return "C4ISR " + `${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}` + " ECC FIPS 186-5 ENCRYPTION ENABLED";
+}
+
+function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    const parts = formattedDate.split(' ');
+    parts[1] = parts[1].toUpperCase();
+    return `${parts[2]}, ${parts[1]} ${parts[0]}`;
+}
+
+function formatTime(date) {
+    const hours = date.getUTCHours().toString().padStart(2, '0');
+    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    return `${hours}${minutes}` + " HOURS (UTC)";
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.session_op_ip').textContent = getRandomIP();
+    document.querySelector('.session_op_time1').textContent = formatDate(new Date());
+    document.querySelector('.session_op_time2').textContent = formatTime(new Date());
+});
+
+// function wrapText(containerId) {
+//     const textContainer = document.getElementById(containerId);
+//     const text = textContainer.textContent;
+//     textContainer.innerHTML = '';
+
+//     for (let char of text) {
+//         const span = document.createElement('span');
+//         if (char === ' ') {
+//             span.classList.add('space');
+//         } else {
+//             span.textContent = char;
+//             span.classList.add('rotate_letter');
+//         }
+//         textContainer.appendChild(span);
+//     }
+// }
+
+// wrapText("rotate_wrap1");
+
